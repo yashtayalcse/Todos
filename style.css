@@ -390,21 +390,26 @@ li {
     li {
         flex-direction: row;
         align-items: center;
-        gap: 8px;
+        justify-content: space-between;
+        gap: 10px;
         padding: 15px;
+        flex-wrap: nowrap;
     }
     
     li span {
         flex: 1;
         font-size: 14px;
-        margin-right: 8px;
+        margin-right: 10px;
+        min-width: 0;
+        overflow-wrap: break-word;
     }
     
     li button {
         padding: 8px 12px;
-        font-size: 12px;
-        min-width: 60px;
-        margin-left: 4px;
+        font-size: 11px;
+        min-width: 55px;
+        flex-shrink: 0;
+        margin: 0 2px;
     }
 }
 
