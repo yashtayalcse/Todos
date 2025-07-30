@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="./script.js" defer></script>
+</head>
+<body class="dark">
+    <div class="heading">TODOS</div>
+    <div class="theme">
+        <p id="theameName"> Dark mode </p>
+        <button id="darkbtn" class="darkbtnC1">🌙</button>        
+    </div>
+    <div class="inputTaskSection">
+        <input id="inputBar" type="text" placeholder="enter task">
+        <button class="greenButton" id="addTaskbtn">Add Task</button>
+    </div>
+    <div class="taskcategory">
+        <button class="activeCategory">All</button>
+        <button class="">Active</button>
+        <button class="">Completed</button>
+    </div>
+    <ul id="taskList">
+
+    </ul>
+    <div class="clearCompleted">
+        <button class="redButton" id="clearCompleted">Clear Completed Tasks</button>
+    </div>
+</body>
+</html>
+
