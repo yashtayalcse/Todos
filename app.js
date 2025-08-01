@@ -6,6 +6,7 @@ const app = express();
 const port = 5051;
 
 const url = 'mongodb+srv://yashtayal28763:FLCs99lh7v9KWzQr@clustertodos.4vzmqav.mongodb.net/?retryWrites=true&w=majority&appName=ClusterTodos'; //mongodb connection string
+// const url = 'mongodb://localhost:27017/';
 const client = new MongoClient(url); //acts like a gateway to your MongoDB server
 const dbName = 'Tasksdb';
 

@@ -188,11 +188,16 @@ clearButton.addEventListener('click',(ev)=>{
     })
 })
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   new Sortable(taskList, {
-//     animation: 150,       // smooth movement in px
-//     ghostClass: "ghost",  // optional class for dragged element
-//   });
-// });
+document.addEventListener("DOMContentLoaded", function () {
+  new Sortable(taskList, {
+    animation: 150,       // smooth movement in px
+    ghostClass: "ghost",  // optional class for dragged element
+    onEnd: function (evt) {
+    console.log("Item reordered!");
+    // Code to track new order or sync with backend
+    }
+  });
+
+});
 
 refreshTodos();
