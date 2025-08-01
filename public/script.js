@@ -58,6 +58,7 @@ let addTaskbtn = document.getElementById('addTaskbtn');
 let inputTask = document.getElementById('inputBar');
 let listOptions = document.querySelector('.taskcategory');
 let clearButton = document.getElementById('clearCompleted');
+// import Sortable from 'sortablejs';
 
 addTaskbtn.addEventListener('click',()=>{
     let taskName = inputTask.value.trim();
@@ -186,5 +187,12 @@ clearButton.addEventListener('click',(ev)=>{
         console.log(err.message);
     })
 })
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   new Sortable(taskList, {
+//     animation: 150,       // smooth movement in px
+//     ghostClass: "ghost",  // optional class for dragged element
+//   });
+// });
 
 refreshTodos();
