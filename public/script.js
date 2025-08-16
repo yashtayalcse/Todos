@@ -31,10 +31,10 @@ function refreshTodos(){
             filteredTodos.forEach((d,i) => {
                 let li = document.createElement('li');
                 li.innerHTML = `
-                    <span>${d.task}</span>
+                    <span id="taskName">${d.task}</span>
                     <span style="display:none" id="idOfTask">${d.id}</span>
                     <div class="itemButtons">
-                    <button class="${(d.completed)?"redButton":"greenButton"}">${ (d.completed) ? "Undo" : "Complete" }</button>
+                    <button class="${(d.completed)?"redButton":"greenButton"}" id="statusButton">${ (d.completed) ? "Undo" : "Complete" }</button>
                     <button class="greenButton">Edit</button>
                     <button class="greenButton">Delete</button>
                     </div>                    
@@ -60,22 +60,30 @@ let listOptions = document.querySelector('.taskcategory');
 let clearButton = document.getElementById('clearCompleted');
 // import Sortable from 'sortablejs';
 
-addTaskbtn.addEventListener('click',()=>{
+function addTask() {
     let taskName = inputTask.value.trim();
     inputTask.value = "";
-    if(taskName == ""){
-        alert('enter valid task!!');
+    if (taskName === "") {
+        alert('Enter a valid task!!');
         return;
     }
-    
-    axios.post('/todos', {'task': taskName})
-        .then(res=>{
+
+    axios.post('/todos', { task: taskName })
+        .then(res => {
             refreshTodos();
         })
-        .catch(err=>{
+        .catch(err => {
             console.log(err.message);
-        })
-})
+        });
+}
+
+// ✅ Click event on button
+addTaskbtn.addEventListener('click', addTask);
+
+// ✅ Enter key event on input field
+inputTask.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') addTask();
+});
 
 listOptions.addEventListener('click',(ev)=>{
     if(ev.target.tagName == 'BUTTON'){
@@ -195,9 +203,24 @@ document.addEventListener("DOMContentLoaded", function () {
     onEnd: function (evt) {
     console.log("Item reordered!");
     // Code to track new order or sync with backend
+    let newOrdered = [];
+    let lis = Array.from(taskList.getElementsByTagName('li'));
+
+    lis.forEach(li=>{
+        // console.log(li);
+        newOrdered.push({
+            task: li.querySelector('#taskName').innerText,
+            id: li.querySelector('#idOfTask').innerText,
+            status: (li.querySelector('#statusButton').innerText == 'Undo')? true : false 
+        })
+    })
+
+    console.log(newOrdered);
     }
   });
 
 });
+
+//to do: mongoose implementation and homework of core mongo db tabler od. entors and from L28 to L33
 
 refreshTodos();
